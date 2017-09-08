@@ -1,6 +1,6 @@
 package cn.edu.seu.demo.test;
 
-import cn.edu.seu.demo.mr.BrandMR;
+import cn.edu.seu.demo.mr.UsrLocMR;
 import org.apache.log4j.BasicConfigurator;
 
 /**
@@ -10,7 +10,7 @@ public class UsrLocTest {
     public static void main(String[] args) {
         BasicConfigurator.configure();
         //change to your file path
-        String filePath = "/opt/ilogdata/log_test.txt";
+        String filePath = "/opt/logs.txt";
 
         System.out.println("Loading Data start");
         //Hdfs.uploadLocalfileHdfs(filePath);
@@ -18,7 +18,7 @@ public class UsrLocTest {
 
         try {
             System.out.println("mr branch start");
-            BrandMR.runner(filePath);
+            UsrLocMR.runner(filePath);
             System.out.println("mr branch success");
 
             // HiveData.hiveLoadData("brand");
