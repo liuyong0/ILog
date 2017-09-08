@@ -5,7 +5,7 @@ import cn.edu.seu.demo.mr.BrandMR;
 
 public class test{
     public static void main(String[] args) {
-        String filePath = "/opt/logs.txt";
+        String filePath = "/opt/log.txt";
         System.out.println("Loading Data start");
         Hdfs.uploadLocalfileHdfs(filePath);
         System.out.println("Loading over");
