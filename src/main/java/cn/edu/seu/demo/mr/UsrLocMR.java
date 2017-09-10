@@ -8,6 +8,7 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
 
+import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
@@ -20,18 +21,15 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
  * Created by root on 7/9/17.
  */
 public class UsrLocMR {
-    static Long id = Long.valueOf(1);
-    // 获取当前系统换行符
-    private static String lineSeparator = (String) java.security.AccessController
-            .doPrivileged(new sun.security.action.GetPropertyAction("line.separator"));
-
     public static void runner(String inputfile) throws Exception{
 
         String[] strs =inputfile.split("\\.");
-        String outputPath =strs[0]+"/output";
+        String outputPath =strs[0]+"/UsrLoc";
+        System.out.println(outputPath);
 
         Configuration conf = new Configuration();
-        conf.set("fs.default.name", "hdfs://WuRui001:9000");
+        //conf.set("fs.default.name", "hdfs://WuRui001:9000");
+        conf.set("fs.default.name", "hdfs://ilog001:9000");
         conf.set("fs.hdfs.impl",org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
         conf.set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
 
@@ -41,18 +39,14 @@ public class UsrLocMR {
             fs.delete(new Path(outputPath), true);
             fs.close();
 
-            Job job = Job.getInstance(conf);
+            Job job = Job.getInstance(conf, "usr location");
 
-            job.setJarByClass(UsrLocMR.class);
-
+            job.setJarByClass(BrandMR.class);
             job.setMapperClass(LogMapper.class);
+            job.setCombinerClass(LogReducer.class);
             job.setReducerClass(LogReducer.class);
-
-            job.setMapOutputKeyClass(LongWritable.class);
-            job.setMapOutputValueClass(Text.class);
-
             job.setOutputKeyClass(Text.class);
-            job.setOutputValueClass(NullWritable.class);
+            job.setOutputValueClass(IntWritable.class);
 
             FileInputFormat.addInputPath(job, new Path(inputfile));
             FileOutputFormat.setOutputPath(job, new Path(outputPath));
@@ -66,36 +60,37 @@ public class UsrLocMR {
 
     }
 
-    public static class LogMapper extends Mapper<LongWritable, Text, LongWritable, Text>{
+    public static class LogMapper extends Mapper<Object, Text, Text, IntWritable>{
         Text outputValue = new Text();
-        private final LongWritable one = new LongWritable(1);
+        private final IntWritable one = new IntWritable(1);
 
         @Override
-        protected void map(LongWritable key, Text value, Context context)
+        protected void map(Object key, Text value, Context context)
                 throws IOException, InterruptedException {
 
-            String line = value.toString();
-            String[] lineContent = line.split("\t");
+            String[] lineContent = value.toString().split("\t");
 
-            outputValue.set(lineContent[2]);
-            System.out.println(lineContent[2]);
-            context.write(one, outputValue);
+            outputValue.set(lineContent[2]+"\t"+lineContent[1]);
+
+            //<(city, phone), 1>
+            context.write(outputValue,one);
 
         }
 
     }
 
-    public static class LogReducer extends Reducer<LongWritable, Text, Text, NullWritable> {
+    public static class LogReducer extends Reducer<Text,IntWritable,Text,IntWritable> {
 
+        private IntWritable result = new IntWritable();
         @Override
-        protected void reduce(LongWritable key, Iterable<Text> values, Context context)
+        protected void reduce(Text key, Iterable<IntWritable> values, Context context)
                 throws IOException, InterruptedException {
-
-            for (Text value : values) {
-                System.out.println("value" + value);
-                context.write(new Text(id + "," + value), NullWritable.get());
-                id++;
+            int sum = 0;
+            for (IntWritable value : values) {
+                sum += value.get();
             }
+            result.set(sum);
+            context.write(key, result);
         }
     }
 

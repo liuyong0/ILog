@@ -1,31 +1,45 @@
 package cn.edu.seu.demo.test;
 
+import cn.edu.seu.demo.Hdfs;
+import cn.edu.seu.demo.MysqlData;
 import cn.edu.seu.demo.mr.UsrLocMR;
 import org.apache.log4j.BasicConfigurator;
+
+import java.io.File;
 
 /**
  * Created by root on 9/7/17.
  */
 public class UsrLocTest {
     public static void main(String[] args) {
-        BasicConfigurator.configure();
+        //BasicConfigurator.configure();
         //change to your file path
-        String filePath = "/opt/logs.txt";
+        String filePath = "/opt/ilogdata";
 
-        System.out.println("Loading Data start");
-        //Hdfs.uploadLocalfileHdfs(filePath);
-        System.out.println("Loading success");
+        System.out.println("Loading and mr usrlocation start");
+        File file = new File(filePath);
+        for(File singlefile : file.listFiles()){
+            if(singlefile.isFile() && !singlefile.isHidden()){
+                String filename = singlefile.toString();
 
-        try {
-            System.out.println("mr branch start");
-            UsrLocMR.runner(filePath);
-            System.out.println("mr branch success");
+                System.out.println(filename);
+                //Hdfs.uploadLocalfileHdfs(filename);
 
-            // HiveData.hiveLoadData("brand");
-            //System.out.println("成功1");
-        } catch (Exception e) {
-            e.printStackTrace();
+                try {
+                    //UsrLocMR.runner(filename);
+                    //Hdfs.downloadtoLocalfile(filename);
+                    //System.out.println(filename);
+                    MysqlData.mysqlLoadData(filename);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+
         }
+        System.out.println("Loading and mr usrlocation start success");
 
     }
 }
+
