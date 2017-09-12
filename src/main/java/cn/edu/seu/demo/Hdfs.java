@@ -11,7 +11,7 @@ public class Hdfs {
     public static Configuration setConfiguration (){
         Configuration conf = new Configuration();
         //change to your IP
-        conf.set("fs.default.name", "hdfs://ilog001:9000");
+        conf.set("fs.default.name", "hdfs://WuRui001:9000");
         conf.set("fs.hdfs.impl",org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
         conf.set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
 
@@ -48,9 +48,9 @@ public class Hdfs {
 
         String[] strs =filename.split("\\/");
         String data = (strs[3].split("\\."))[0];
-        String hdfsfile = "/opt/ilogdata/"+ data +"/UsrLoc/part-r-00000";
+        String hdfsfile = "/opt/ilogdata/"+ data +"/output/part-r-00000";
 
-        String localfilepath = "/opt/ilogdataOutput/UsrLoc/"+data+"/";
+        String localfilepath = "/opt/ilogdataOutput/"+data+"/";
         try{
             FileSystem fs= FileSystem.get(conf);
 

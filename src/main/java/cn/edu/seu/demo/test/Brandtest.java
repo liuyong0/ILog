@@ -15,7 +15,7 @@ public class Brandtest {
             BrandMR.runner(filePath);
             System.out.println("mr success");
             HiveData.hiveLoadData("brand");
-            System.out.println("成功1");
+            System.out.println("import hive success");
         } catch (Exception e) {
             e.printStackTrace();
         }

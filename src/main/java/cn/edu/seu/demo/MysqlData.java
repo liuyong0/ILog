@@ -14,19 +14,19 @@ public class MysqlData {
         Connection con=null;
         try {
             Class.forName(driverName);
-            con = DriverManager.getConnection("jdbc:mysql://ilog001:3306/test", "root", "123456");                       //注意数据库名称，此处为logs
+            con = DriverManager.getConnection("jdbc:mysql://WuRui001:3306/logs", "root", "123456");                       //注意数据库名称，此处为logs
             Statement stmt = con.createStatement();
 
             String[] strs =filename.split("\\/");
             String data = (strs[3].split("\\."))[0];
-            String tablename = "UsrLoc"+ data;
+            String tablename = "Time"+ data;
 
             System.out.println(data);
             String deletetable = "DROP TABLE IF EXISTS "+tablename;
             String creattable = "CREATE TABLE " + tablename +
-                    "(city INT , usr VARCHAR(11), times LONG);";
+                    "(time VARCHAR(30), phone VARCHAR(11), city INT ,num INT);";
 
-            String loaddata = "LOAD DATA LOCAL INFILE '/opt/ilogdataOutput/UsrLoc/"+data+"' INTO TABLE "+tablename;
+            String loaddata = "LOAD DATA LOCAL INFILE '/opt/ilogdataOutput/"+data+"' INTO TABLE "+tablename;
                     //+" FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\\\'";
 
             //createtable
