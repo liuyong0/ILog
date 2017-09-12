@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+
+    <meta name="description" content="Violate Responsive Admin Template">
+    <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+    <title>用户终端品牌</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!--引入ECharts-->
+
+    <script src="js/echarts/echarts.min.js"></script>
+    <script src="js/echarts/china.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="js/bootstrap-3.3.4.css">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="js/font-awesome.4.6.0.css">
+    <link href="css/form.css" rel="stylesheet">
+    <link href="css/calendar.css" rel="stylesheet">
+    <link href="css/media-player.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/icons.css" rel="stylesheet">
+    <link href="css/generics.css" rel="stylesheet"> 
+    <link href="css/mstp_map.css" rel="stylesheet"> 
+    <link href="css/menu.css" rel="stylesheet">
+
+</head>
+
+<body id="skin-blur-blue">
+    <header id="header" class="media">
+        <a href="" id="menu-toggle"></a> 
+        <a class="logo pull-left" href="index.html">用户终端品牌分析</a>
+
+
+    </header>
+
+    <div class="clearfix"></div>
+
+    <section id="main" class="p-relative" role="main">
+
+        <!-- Sidebar -->
+        <aside id="sidebar">
+
+         <ul class="list-unstyled side-menu" style="width: 100%!important;padding-top: 20px;">
+
+            <li class="active">
+                <a href="brand.html" id='menuurl'>
+                    <i class="fa fa-bar-chart-o"></i><span> 用户品牌特征</span>
+                </a>
+            </li>
+            <li>
+                <a href="detail_brand.html"  id='menuurl'>
+                    <i class="fa fa-sort-amount-asc"></i><span> 用户品牌特征变化</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+    <!-- Content -->
+    <section id="content" class="container">
+
+
+
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb hidden-xs">
+            <li><a href="index.html">首页</a></li>
+            <li class="active">用户终端品牌分布图</li>
+        </ol>
+        <h4 class="page-title">用户终端品牌分布图</h4>
+        <!--   <form class="form-inline"> -->
+        <!-- <div class="form-group"> -->
+        <!-- <label for="carcard-color2" class="col-sm-2 control-label"> 时间：</label> -->
+        <div class="pull-left">
+            <span class="page-title">时间：</span>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default " data-toggle="modal" data-target="#addTable" id="add-table">
+                   昨天
+               </button>
+               <button type="button" class="btn btn-default" id="del-table">
+                  最近七天
+              </button>
+              <button type="button" class="btn btn-default " data-toggle="modal" data-target="#changeAllTable" id="btn-changeAll">
+                  最近30天
+              </button>
+          </div>
+      </div>
+
+      <!-- <div class="form-group ">  -->               
+      <div class="pull-left" id="DateInput">
+       <input type="date" class="form-control " id="date_usersrea"
+       required="true" dateISO="true">
+   </div>
+   <!-- </div> -->
+   <!-- </div> -->
+
+   <!-- </form> -->
+   <div id="select_clear">
+      <form class="form-inline">
+   <!--  <div class="form-group">
+        <span class="page-title">地域：</span>
+        <select class="form-control " id="userareaKind" >    
+            <option value="">全国</option>
+            <option value="">北京</option>
+        </select>
+    </div>
+-->
+<div class="form-group">   <button type="button" class="btn  pull-right btn-default" id="dataCheckSearch" >
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 搜索</button></div>
+</div>
+</form>
+</div>
+
+
+<div class="block-area">
+
+    <div class="row">
+        <!-- World Map -->
+        <div class="col-md-12">
+            
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<hr class="whiter m-t-20 m-b-20" />
+
+<br/><br/><br/>
+</section>
+</section>
+
+<!-- Javascript Libraries -->
+
+<script src="js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+
+<!--引入ECharts-->
+<script src="js/echarts/echarts.min.js"></script>
+<script src="js/echarts/china.js"></script>
+<!-- Charts -->
+<script src="js/charts/jquery.flot.js"></script> <!-- Flot Main -->
+<script src="js/charts/jquery.flot.time.js"></script> <!-- Flot sub -->
+<script src="js/charts/jquery.flot.animator.min.js"></script> <!-- Flot sub -->
+<script src="js/charts/jquery.flot.resize.min.js"></script> <!-- Flot sub - for repaint when resizing the screen -->
+<script src="js/charts/jquery.flot.orderBar.js"></script> <!-- Flot Bar chart -->
+<script src="js/charts/jquery.flot.pie.min.js"></script> <!-- Flot Pie chart -->
+
+<script src="js/sparkline.min.js"></script> <!-- Sparkline - Tiny charts -->
+<script src="js/easypiechart.js"></script> <!-- EasyPieChart - Animated Pie Charts -->
+<script src="js/mstp_map.js"></script> <!-- All the above chart related functions -->
+
+<!-- Map -->
+<script src="js/maps/jvectormap.min.js"></script> <!-- jVectorMap main library -->
+<!--Media Player-->
+<script src="js/media-player.min.js"></script> <!-- USA Map for jVectorMap -->
+
+<!-- UX -->
+<script src="js/scroll.min.js"></script> <!-- Custom Scrollbar -->
+
+<!-- Other -->
+<script src="js/calendar.min.js"></script> <!-- Calendar -->
+<script src="js/feeds.min.js"></script> <!-- News Feeds -->
+
+
+<!-- All JS functions -->
+<script src="js/functions.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#DateInput").css("width","16%");
+        $("#userareaKind").css("width","100px")
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+
+    <meta name="description" content="Violate Responsive Admin Template">
+    <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+    <title>用户上网时段</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!--引入ECharts-->
+    <script src="js/echarts/echarts.min.js"></script>
+    <script src="js/echarts/china.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="js/bootstrap-3.3.4.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="js/font-awesome.4.6.0.css">
+    <link href="css/form.css" rel="stylesheet">
+    <link href="css/calendar.css" rel="stylesheet">
+    <link href="css/media-player.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/icons.css" rel="stylesheet">
+    <link href="css/generics.css" rel="stylesheet"> 
+    <link href="css/mstp_map.css" rel="stylesheet"> 
+    <link href="css/menu.css" rel="stylesheet">
+
+</head>
+
+<body id="skin-blur-blue">
+    <header id="header" class="media">
+        <a href="" id="menu-toggle"></a> 
+        <a class="logo pull-left" href="index.html">用户上网时段分析</a>
+
+
+    </header>
+
+    <div class="clearfix"></div>
+
+    <section id="main" class="p-relative" role="main">
+
+        <!-- Sidebar -->
+        <aside id="sidebar">
+
+         <ul class="list-unstyled side-menu" style="width: 100%!important;padding-top: 20px;">
+
+           <!--  <li class="active">
+                <a href="user_area.html" id='menuurl'>
+                    <i class="fa fa-bar-chart-o"></i><span> 全息图概览</span>
+                </a>
+            </li>
+            <li>
+                <a href="detail_user_area.html"  id='menuurl'>
+                    <i class="fa fa-sort-amount-asc"></i><span> 详细信息</span>
+                </a>
+            </li> -->
+
+        </ul>
+
+    </aside>
+    <!-- Content -->
+    <section id="content" class="container">
+
+
+
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb hidden-xs">
+            <li><a href="index.html">首页</a></li>
+            <li class="active">用户上网时段分布图</li>
+        </ol>
+        <h4 class="page-title">用户上网时段分布图</h4>
+        <!--   <form class="form-inline"> -->
+        <!-- <div class="form-group"> -->
+        <!-- <label for="carcard-color2" class="col-sm-2 control-label"> 时间：</label> -->
+        <div class="pull-left">
+            <span class="page-title">时间：</span>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default " data-toggle="modal" data-target="#addTable" id="add-table">
+                    最近一周
+                </button>
+                <button type="button" class="btn btn-default" id="del-table">
+                  最近1个月
+              </button>
+              <button type="button" class="btn btn-default " data-toggle="modal" data-target="#changeAllTable" id="btn-changeAll">
+                  最近3个月
+              </button>
+          </div>
+      </div>
+
+      <!-- <div class="form-group ">  -->               
+      <div class="pull-left" id="DateInput">
+         <input type="date" class="form-control " id="date_usersrea"
+         required="true" dateISO="true">
+     </div>
+     <!-- </div> -->
+     <!-- </div> -->
+
+     <!-- </form> -->
+     <div id="select_clear">
+      <form class="form-inline">
+   <!--  <div class="form-group">
+        <span class="page-title">指标：</span>
+        <select class="form-control " id="userareaKind" >    
+            <option value="PV">浏览量PV</option>
+            <option value="UV">访客数UV</option>
+        </select>
+    </div>
+-->
+<div class="form-group">   <button type="button" class="btn  pull-right btn-default" id="dataCheckSearch" >
+    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 搜索</button></div>
+</div>
+</form>
+</div>
+
+
+<div class="block-area" >
+
+    <div class="row">
+        <!-- World Map -->
+        <div class="col-md-12">
+          <div id="mainST" style="width: 100%;height:600px;"></div>
+
+          <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('mainST'));
+
+// Generate data
+var category = [];
+var dottedBase = +new Date();
+var lineData = [];
+var barData = [];
+
+for (var i = 0; i < 20; i++) {
+    var date = new Date(dottedBase += 1000 * 3600 * 24);
+    category.push([
+        date.getFullYear(),
+        date.getMonth() + 1,
+        date.getDate()
+        ].join('-'));
+    var b = Math.random() * 200;
+    var d = Math.random() * 200;
+    barData.push(b)
+    lineData.push(d + b);
+}
+
+
+// option
+option = {
+    backgroundColor: '#0f375f',
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow',
+            label: {
+                show: true,
+                backgroundColor: '#333'
+            }
+        }
+    },
+    legend: {
+        data: ['line', 'bar'],
+        textStyle: {
+            color: '#ccc'
+        }
+    },
+    xAxis: {
+        data: category,
+        axisLine: {
+            lineStyle: {
+                color: '#ccc'
+            }
+        }
+    },
+    yAxis: {
+        splitLine: {
+            show: false
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#ccc'
+            }
+        }
+    },
+    series: [{
+        name: 'line',
+        type: 'line',
+        smooth: true,
+        showAllSymbol: true,
+        symbol: 'emptyCircle',
+        symbolSize: 15,
+        data: lineData
+    }, {
+        name: 'bar',
+        type: 'bar',
+        barWidth: 10,
+        itemStyle: {
+            normal: {
+                barBorderRadius: 5,
+                color: new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1, [{
+                        offset: 0,
+                        color: '#14c8d4'
+                    }, {
+                        offset: 1,
+                        color: '#43eec6'
+                    }]
+                    )
+            }
+        },
+        data: barData
+    }, {
+        name: 'line',
+        type: 'bar',
+        barGap: '-100%',
+        barWidth: 10,
+        itemStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(
+                    0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(20,200,212,0.5)'
+                    }, {
+                        offset: 0.2,
+                        color: 'rgba(20,200,212,0.2)'
+                    }, {
+                        offset: 1,
+                        color: 'rgba(20,200,212,0)'
+                    }]
+                    )
+            }
+        },
+        z: -12,
+        data: lineData
+    }, {
+        name: 'dotted',
+        type: 'pictorialBar',
+        symbol: 'rect',
+        itemStyle: {
+            normal: {
+                color: '#0f375f'
+            }
+        },
+        symbolRepeat: true,
+        symbolSize: [12, 4],
+        symbolMargin: 1,
+        z: -10,
+        data: lineData
+    }]
+};
+// 使用刚指定的配置项和数据显示图表。
+myChart.setOption(option);
+</script>
+</div>
+</div>
+</div>
+
+
+<hr class="whiter m-t-20 m-b-20" />
+
+<br/><br/><br/>
+</section>
+</section>
+
+<!-- Javascript Libraries -->
+
+<script src="js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+
+<!--引入ECharts-->
+<script src="js/echarts/echarts.min.js"></script>
+<script src="js/echarts/china.js"></script>
+<!-- Charts -->
+<script src="js/charts/jquery.flot.js"></script> <!-- Flot Main -->
+<script src="js/charts/jquery.flot.time.js"></script> <!-- Flot sub -->
+<script src="js/charts/jquery.flot.animator.min.js"></script> <!-- Flot sub -->
+<script src="js/charts/jquery.flot.resize.min.js"></script> <!-- Flot sub - for repaint when resizing the screen -->
+<script src="js/charts/jquery.flot.orderBar.js"></script> <!-- Flot Bar chart -->
+<script src="js/charts/jquery.flot.pie.min.js"></script> <!-- Flot Pie chart -->
+
+<script src="js/sparkline.min.js"></script> <!-- Sparkline - Tiny charts -->
+<script src="js/easypiechart.js"></script> <!-- EasyPieChart - Animated Pie Charts -->
+<script src="js/mstp_map.js"></script> <!-- All the above chart related functions -->
+
+<!-- Map -->
+<script src="js/maps/jvectormap.min.js"></script> <!-- jVectorMap main library -->
+<!--Media Player-->
+<script src="js/media-player.min.js"></script> <!-- USA Map for jVectorMap -->
+
+<!-- UX -->
+<script src="js/scroll.min.js"></script> <!-- Custom Scrollbar -->
+
+<!-- Other -->
+<script src="js/calendar.min.js"></script> <!-- Calendar -->
+<script src="js/feeds.min.js"></script> <!-- News Feeds -->
+
+
+<!-- All JS functions -->
+<script src="js/functions.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#DateInput").css("width","30%");
+    });
+</script>
+
+
+</body>
+</html>

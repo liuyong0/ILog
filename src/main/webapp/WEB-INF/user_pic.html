@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+
+    <meta name="description" content="Violate Responsive Admin Template">
+    <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+
+    <title>用户画像</title>
+
+    <!--引入ECharts-->
+    <script src="js/echarts/echarts.min.js"></script>
+    <script src="js/echarts/china.js"></script>
+    <script src='https://cdn.bootcss.com/echarts/3.7.0/echarts.simple.js'></script>
+    <script src="js/echarts/echarts-wordcloud.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="js/bootstrap-3.3.4.css">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="js/font-awesome.4.6.0.css">
+    <link href="css/form.css" rel="stylesheet">
+    <link href="css/calendar.css" rel="stylesheet">
+    <link href="css/media-player.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/icons.css" rel="stylesheet">
+    <link href="css/generics.css" rel="stylesheet"> 
+    <link href="css/mstp_map.css" rel="stylesheet"> 
+    <link href="css/menu.css" rel="stylesheet">
+</head>
+
+<body id="skin-blur-blue">
+    <header id="header" class="media">
+        <a href="" id="menu-toggle"></a> 
+        <a class="logo pull-left" href="index.html">用户画像分析</a>
+
+
+    </header>
+
+    <div class="clearfix"></div>
+
+    <section id="main" class="p-relative" role="main">
+
+        <!-- Sidebar -->
+        <aside id="sidebar">
+
+         <ul class="list-unstyled side-menu" style="width: 100%!important;padding-top: 20px;">
+
+            <!-- <li class="active">
+                <a href="user_area.html" id='menuurl'>
+                    <i class="fa fa-bar-chart-o"></i><span> 全息图概览</span>
+                </a>
+            </li>
+            <li>
+                <a href="detail_user_area.html"  id='menuurl'>
+                    <i class="fa fa-sort-amount-asc"></i><span> 详细信息</span>
+                </a>
+            </li>
+ -->
+        </ul>
+
+    </aside>
+
+    <!-- Content -->
+    <section id="content" class="container">
+
+
+
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb hidden-xs">
+            <li><a href="index.html">首页</a></li>
+            <li class="active">用户画像</li>
+        </ol>
+        <h4 class="page-title">用户画像</h4>
+        <!--   <form class="form-inline"> -->
+        <!-- <div class="form-group"> -->
+        <!-- <label for="carcard-color2" class="col-sm-2 control-label"> 时间：</label> -->
+
+        <div class="col-md-12" style="background-color:#FFFAF0  ; ">
+            <div id="mainUP" style="width: 100%;height:600px;"></div>
+
+        </div>
+
+        <br/><br/><br/>
+    </section>
+</section>
+
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('mainUP'));
+
+        var option = {
+            tooltip: {},
+            series: [ {
+                type: 'wordCloud',
+                gridSize: 2,
+                sizeRange: [12, 50],
+                rotationRange: [-90, 90],
+                shape: 'pentagon',
+                width: 600,
+                height: 400,
+                drawOutOfBound: true,
+                textStyle: {
+                    normal: {
+                        color: function () {
+                            return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                            ].join(',') + ')';
+                        }
+                    },
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                data: [
+                {
+                    name: 'Sam S Club',
+                    value: 10000,
+                    textStyle: {
+                        normal: {
+                            color: 'black'
+                        },
+                        emphasis: {
+                            color: 'red'
+                        }
+                    }
+                },
+                {
+                    name: 'Macys',
+                    value: 6181
+                },
+                {
+                    name: 'Amy Schumer',
+                    value: 4386
+                },
+                {
+                    name: 'Jurassic World',
+                    value: 4055
+                },
+                {
+                    name: 'Charter Communications',
+                    value: 2467
+                },
+                {
+                    name: 'Chick Fil A',
+                    value: 2244
+                },
+                {
+                    name: 'Planet Fitness',
+                    value: 1898
+                },
+                {
+                    name: 'Pitch Perfect',
+                    value: 1484
+                },
+                {
+                    name: 'Express',
+                    value: 1112
+                },
+                {
+                    name: 'Home',
+                    value: 965
+                },
+                {
+                    name: 'Johnny Depp',
+                    value: 847
+                },
+                {
+                    name: 'Lena Dunham',
+                    value: 582
+                },
+                {
+                    name: 'Lewis Hamilton',
+                    value: 555
+                },
+                {
+                    name: 'KXAN',
+                    value: 550
+                },
+                {
+                    name: 'Mary Ellen Mark',
+                    value: 462
+                },
+                {
+                    name: 'Farrah Abraham',
+                    value: 366
+                },
+                {
+                    name: 'Rita Ora',
+                    value: 360
+                },
+                {
+                    name: 'Serena Williams',
+                    value: 282
+                },
+                {
+                    name: 'NCAA baseball tournament',
+                    value: 273
+                },
+                {
+                    name: 'Point Break',
+                    value: 265
+                }
+                ]
+            } ]
+        };
+        myChart.setOption(option);
+        window.onresize = myChart.resize;
+    </script>
+
+
+</body>
+</html>
+
+
+
+
