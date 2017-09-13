@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+
+    <meta name="description" content="Violate Responsive Admin Template">
+    <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!--引入ECharts-->
+    <script src="js/echarts/echarts.min.js"></script>
+    <script src="js/echarts/china.js"></script>
+    <script src="js/echarts/dark-blue.js"></script>
+    
+    <title>用户活跃区域分析</title>
+
+    
+    <link rel="stylesheet" type="text/css" href="js/bootstrap-3.3.4.css">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="js/font-awesome.4.6.0.css">
+    <link href="css/form.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/calendar.css" rel="stylesheet">
+    <link href="css/media-player.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/icons.css" rel="stylesheet">
+    <link href="css/generics.css" rel="stylesheet"> 
+    <link href="css/mstp_map.css" rel="stylesheet"> 
+    <link href="css/menu.css" rel="stylesheet">
+</head>
+
+<body id="skin-blur-blue">
+    <header id="header" class="media">
+        <a href="" id="menu-toggle"></a> 
+        <a class="logo pull-left" href="index.html">用户活跃度分析</a>
+
+
+    </header>
+
+    <div class="clearfix"></div>
+
+    <section id="main" class="p-relative" role="main">
+
+        <!-- Sidebar -->
+        <aside id="sidebar">
+
+           <ul class="list-unstyled side-menu" style="width: 100%!important;padding-top: 20px;">
+
+            <li >
+                <a href="user_area.html" id='menuurl'>
+                    <i class="fa fa-bar-chart-o"></i><span> 全息图概览</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="detail_user_area.html"  id='menuurl'>
+                    <i class="fa fa-sort-amount-asc"></i><span> 详细信息</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </aside>
+    <!-- Content -->
+    <section id="content" class="container">
+
+
+
+        <!-- Breadcrumb -->
+        <ol class="breadcrumb hidden-xs">
+            <li><a href="index.html">首页</a></li>
+            <li class="active">用户活跃度详细信息</li>
+        </ol>
+        <h4 class="page-title">用户活跃度分布图</h4>
+
+        <div >
+
+        </div>
+
+        <div class="block-area">
+
+            <div class="row">
+                <!-- World Map -->
+                <div class="col-md-12">
+                 <table class="table  table-bordered  table-condensed tableid "  id="tableid">
+                    <tr  style="background-color:#2F4F4F "> 
+                        <th></th>
+                        <th> 地域</th>
+                        <th> 浏览量(PV)</th>
+                        <th> 访客数(UV)</th>
+
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-line-chart" aria-hidden="true"></i></td>
+                        <td>江苏</td>
+                        <td>32</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-line-chart" aria-hidden="true"></i></td>
+                        <td>北京</td>
+                        <td>52</td>
+                        <td>63</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-line-chart" aria-hidden="true"></i></td>
+                        <td>上海</td>
+                        <td>40</td>
+                        <td>22</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-line-chart" aria-hidden="true"></i></td>
+                        <td>天津</td>
+                        <td>22</td>
+                        <td>22</td>
+                    </tr>
+
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <hr class="whiter m-t-20 m-b-20" />
+
+    <br/><br/><br/>
+</section>
+</section>
+
+
+<script src="js/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+<!--引入ECharts-->
+<script src="js/echarts/echarts.min.js"></script>
+<script src="js/echarts/china.js"></script>
+<!-- Charts -->
+<script src="js/charts/jquery.flot.js"></script> <!-- Flot Main -->
+<script src="js/charts/jquery.flot.time.js"></script> <!-- Flot sub -->
+<script src="js/charts/jquery.flot.animator.min.js"></script> <!-- Flot sub -->
+<script src="js/charts/jquery.flot.resize.min.js"></script> <!-- Flot sub - for repaint when resizing the screen -->
+<script src="js/charts/jquery.flot.orderBar.js"></script> <!-- Flot Bar chart -->
+<script src="js/charts/jquery.flot.pie.min.js"></script> <!-- Flot Pie chart -->
+
+<script src="js/sparkline.min.js"></script> <!-- Sparkline - Tiny charts -->
+<script src="js/easypiechart.js"></script> <!-- EasyPieChart - Animated Pie Charts -->
+<script src="js/mstp_map.js"></script> <!-- All the above chart related functions -->
+
+<!-- Map -->
+<script src="js/maps/jvectormap.min.js"></script> <!-- jVectorMap main library -->
+<!--Media Player-->
+<script src="js/media-player.min.js"></script> <!-- USA Map for jVectorMap -->
+
+<!-- UX -->
+<script src="js/scroll.min.js"></script> <!-- Custom Scrollbar -->
+
+<!-- Other -->
+<script src="js/calendar.min.js"></script> <!-- Calendar -->
+<script src="js/feeds.min.js"></script> <!-- News Feeds -->
+
+
+<!-- All JS functions -->
+<script src="js/functions.js"></script>
+<script>
+    $(document).ready(function() {
+    // var a;
+    
+    $("tr").click(function() {
+        window.location.href = "mark.html";
+
+
+       //  var a = $(this).text();
+
+       //      // console.log($(this).parent())
+       //      // console.log($(this).parent().parent())
+       //      // console.log($(this).parent().eq(1).text())
+       // alert(a);
+   });
+});
+
+</script>
+</body>
+</html>
