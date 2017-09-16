@@ -1,5 +1,7 @@
 package cn.edu.seu.demo.writable;
-
+/*
+将时间戳转化为具体时间
+ */
 import java.text.SimpleDateFormat;
 
 public class TimeTrans {

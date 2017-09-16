@@ -48,9 +48,9 @@ public class Hdfs {
 
         String[] strs =filename.split("\\/");
         String data = (strs[3].split("\\."))[0];
-        String hdfsfile = "/opt/ilogdata/"+ data +"/output/part-r-00000";
+        String hdfsfile = "/opt/topdata/"+ data +"/output/part-r-00000";
 
-        String localfilepath = "/opt/ilogdataOutput/"+data+"/";
+        String localfilepath = "/opt/topdataOutput/"+data+"/";
         try{
             FileSystem fs= FileSystem.get(conf);
 

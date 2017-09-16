@@ -10,6 +10,7 @@ import java.sql.Statement;
  */
 public class MysqlData {
     public  static String driverName = "com.mysql.jdbc.Driver";
+
     public static void mysqlLoadData(String filename) {
         Connection con=null;
         try {
@@ -18,15 +19,15 @@ public class MysqlData {
             Statement stmt = con.createStatement();
 
             String[] strs =filename.split("\\/");
-            String data = (strs[3].split("\\."))[0];
-            String tablename = "Time"+ data;
+            String date = (strs[3].split("\\."))[0];
+            String tablename = "Top"+ date;
 
-            System.out.println(data);
+            System.out.println(date);
             String deletetable = "DROP TABLE IF EXISTS "+tablename;
             String creattable = "CREATE TABLE " + tablename +
-                    "(time VARCHAR(30), phone VARCHAR(11), city INT ,num INT);";
+                    "( phone VARCHAR(11),url VARCHAR(80),num INT)ENGINE= MYISAM CHARACTER SET utf8;";
 
-            String loaddata = "LOAD DATA LOCAL INFILE '/opt/ilogdataOutput/"+data+"' INTO TABLE "+tablename;
+            String loaddata = "LOAD DATA LOCAL INFILE '/opt/topdataOutput/"+date+"' INTO TABLE "+tablename;
                     //+" FIELDS TERMINATED BY '\t' ENCLOSED BY '' ESCAPED BY '\\\\'";
 
             //createtable
@@ -35,7 +36,7 @@ public class MysqlData {
             stmt.execute(creattable);
 
             //加载新数据
-            System.out.println("加载新数据");
+            System.out.println("loading new data");
             stmt.execute(loaddata);
 
         } catch (Exception e) {
